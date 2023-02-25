@@ -6,7 +6,7 @@ const browsersync = require("browser-sync");
 
 // const dist = "./dist/";
 
-const dist = 'C:/OSPanel/domains/pistures-site-dist'
+const dist = 'C:/openserver/domains/pistures-site-dist';
 
 gulp.task("copy-html", () => {
     return gulp.src("./src/index.html")
