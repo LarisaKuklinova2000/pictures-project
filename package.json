@@ -25,6 +25,7 @@
     "webpack-stream": "^7.0.0"
   },
   "dependencies": {
+    "json-server": "^0.17.2",
     "npm-check-updates": "^16.7.5"
   }
 }

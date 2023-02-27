@@ -14,17 +14,16 @@ const modals = () => {
                     e.preventDefault();
                 }
 
-                btnPressed = true
+                btnPressed = true;
 
                 if (destroy) {
-                    item.remove()
+                    item.remove();
                 }
 
                 windows.forEach(item => {
                     item.style.display = 'none';
-                    item.classList.add('animated', 'fadeIn')
+                    item.classList.add('animated', 'fadeIn');
                 });
-                console.log(123)
                 modal.style.display = "block";
                 document.body.style.overflow = "hidden";
                 document.body.style.marginRight = `${scroll}px`;
@@ -60,7 +59,7 @@ const modals = () => {
 
             document.querySelectorAll('[data-modal]').forEach(item => {
                 if (getComputedStyle(item).display !== 'none') {
-                    display = 'block'
+                    display = 'block';
                 }
             })
 

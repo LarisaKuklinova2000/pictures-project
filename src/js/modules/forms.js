@@ -1,4 +1,4 @@
-// import checkNumInputs from './checkNumInputs';
+import { postData } from "../services/requests";
 
 const forms = (state) => {
     const form = document.querySelectorAll('form'),
@@ -19,38 +19,28 @@ const forms = (state) => {
     const path = {
         designer: 'assets/server.php',
         question: 'assets/question.php'
-    }
-
-    const postData = async (url, data) => {
-        let res = await fetch(url, {
-            method: "POST",
-            body: data
-        });
-
-        return await res.text();
     };
 
     const clearInputs = () => {
         inputs.forEach(item => {
-            item.value = ''
-        })
+            item.value = '';
+        });
         upload.forEach(item => {
-            item.previousElementSibling.textContent = 'Файл не выбран'
-        })
+            item.previousElementSibling.textContent = 'Файл не выбран';
+        });
     };
 
     upload.forEach(item => {
         item.addEventListener('input', () => {
-            console.log(item.files[0])
             let dots;
             const arr = item.files[0].name.split('.');
-            arr[0].length > 6 ? dots = '...': dots = '.'
+            arr[0].length > 6 ? dots = '...': dots = '.';
 
             const name = arr[0].substring(0, 5) + dots + arr[1];
 
-            item.previousElementSibling.textContent = name
-        })
-    })
+            item.previousElementSibling.textContent = name;
+        });
+    });
 
     form.forEach(item => {
         item.addEventListener('submit', (e) => {
@@ -62,7 +52,7 @@ const forms = (state) => {
 
             item.classList.add('animated', 'fadeOutUp');
             setTimeout(() => {
-                item.style.display = 'none'
+                item.style.display = 'none';
             }, 400);
 
             let statusImg = document.createElement('img');
@@ -72,7 +62,7 @@ const forms = (state) => {
 
             let textMessage = document.createElement('div');
             textMessage.textContent = message.loading;
-            statusMessage.appendChild(textMessage)
+            statusMessage.appendChild(textMessage);
 
             const formData = new FormData(item);
             let api;
@@ -80,20 +70,20 @@ const forms = (state) => {
 
             postData(api, formData)
                 .then(res => {
-                    statusImg.setAttribute('src', message.ok)
-                    textMessage.textContent = message.success
+                    statusImg.setAttribute('src', message.ok);
+                    textMessage.textContent = message.success;
                 })
                 .catch(() => {
-                    statusImg.setAttribute('src', message.fail)
-                    textMessage.textContent = message.failure
+                    statusImg.setAttribute('src', message.fail);
+                    textMessage.textContent = message.failure;
                 })
                 .finally(() => {
                     clearInputs();
                     setTimeout(() => {
-                        statusMessage.remove()
-                        item.style.display = 'block'
-                        item.classList.remove('fadeOutUp')
-                        item.classList.add('fadeInUp')
+                        statusMessage.remove();
+                        item.style.display = 'block';
+                        item.classList.remove('fadeOutUp');
+                        item.classList.add('fadeInUp');
                     }, 5000);
                 });
         });
