@@ -19,7 +19,7 @@ const calc = (size, material, options, promocode, result) => {
         } else {
             resultBlock.textContent = sum;
         }
-    }
+    };
 
     sizeBlock.addEventListener('change', calcFunc);
     materialBlock.addEventListener('change', calcFunc);

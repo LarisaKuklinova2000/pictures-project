@@ -11,21 +11,21 @@ const sliders = (slides, dir, prev, next) => {
         }
 
         if (n < 1) {
-            slideIndex = items.length
+            slideIndex = items.length;
         }
 
         items.forEach(item => {
             item.classList.add('animated');
             item.style.display = 'none';
 
-        })
+        });
 
-        items[slideIndex - 1].style.display = 'block'
+        items[slideIndex - 1].style.display = 'block';
     }
-    showSlides(slideIndex)
+    showSlides(slideIndex);
 
     function changeSlides(n) {
-        showSlides(slideIndex += n)
+        showSlides(slideIndex += n);
     }
 
     try {
@@ -36,13 +36,13 @@ const sliders = (slides, dir, prev, next) => {
             changeSlides(-1);
             items[slideIndex - 1].classList.remove('slideInLeft');
             items[slideIndex - 1].classList.add('slideInRight');
-        })
+        });
 
         nextBtn.addEventListener('click', () => {
             changeSlides(1);
             items[slideIndex - 1].classList.remove('slideInRight');
             items[slideIndex - 1].classList.add('slideInLeft');
-        })
+        });
     } catch(e) {}
 
     function activateAnimation() {
@@ -59,14 +59,14 @@ const sliders = (slides, dir, prev, next) => {
             }, 3000);
         }
     }
-    activateAnimation()
+    activateAnimation();
 
     items[0].parentNode.addEventListener('mouseenter', () => {
-        clearInterval(paused)
+        clearInterval(paused);
     });
     items[0].parentNode.addEventListener('mouseleave', () => {
-        activateAnimation()
+        activateAnimation();
     });
-}
+};
 
 export default sliders;
