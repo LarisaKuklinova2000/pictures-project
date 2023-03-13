@@ -61,7 +61,7 @@ const modals = () => {
                 if (getComputedStyle(item).display !== 'none') {
                     display = 'block';
                 }
-            })
+            });
 
             if (!display) {
                 document.querySelector(selector).style.display = 'block';
@@ -90,9 +90,9 @@ const modals = () => {
     function openByScroll(selector) {
         window.addEventListener('scroll', () => {
             if (!btnPressed && (window.pageYOffset + document.documentElement.clientHeight >= document.documentElement.scrollHeight)) {
-                document.querySelector(selector).click()
+                document.querySelector(selector).click();
             }
-        })
+        });
     }
 
     bindModal('.button-design', '.popup-design', '.popup-design .popup-close');
